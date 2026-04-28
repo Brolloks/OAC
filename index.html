@@ -17,145 +17,151 @@
   --fb:'League Spartan',sans-serif;
   --fs:'Patrick Hand',cursive;
 }
-html,body{height:100%;background:var(--cream);color:var(--brown);font-family:var(--fb);overflow:hidden;font-size:20px}
+html,body{height:100%;background:var(--cream);color:var(--brown);font-family:var(--fb);font-size:36px;overflow:hidden}
 .pres{height:100vh;display:flex;flex-direction:column}
-.slides-wrap{flex:1;position:relative;overflow:hidden}
 
-/* Mountain ridge decorating the bottom of all content slides */
+/* Progress bar */
+.progress-bar{height:5px;background:var(--cream3);position:relative;z-index:20}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--orange),var(--gold));transition:width .4s ease;width:0%}
+
+.slides-wrap{flex:1;position:relative;overflow:hidden}
 .slides-wrap::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:44px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 44' preserveAspectRatio='none'%3E%3Cpath d='M0,44 L0,24 L90,6 L170,20 L270,3 L360,16 L445,1 L535,14 L625,0 L715,13 L815,3 L910,17 L1010,2 L1105,15 L1200,4 L1200,44Z' fill='rgba(28,71,64,0.07)'/%3E%3Cpath d='M0,44 L0,32 L140,16 L240,28 L370,13 L470,26 L575,11 L675,24 L775,9 L875,23 L975,14 L1075,27 L1200,18 L1200,44Z' fill='rgba(28,71,64,0.11)'/%3E%3C/svg%3E") no-repeat bottom;
   background-size:cover;pointer-events:none;z-index:5;
 }
-
 .slide{
   position:absolute;inset:0;display:flex;flex-direction:column;
-  padding:28px 44px 58px;opacity:0;pointer-events:none;
-  transition:opacity .3s;overflow-y:auto;
+  padding:24px 44px 56px;opacity:0;pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;
+  transform:translateX(40px);
+  overflow-y:auto;
   background:var(--cream);
   background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8bca0' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
 }
-.slide.active{opacity:1;pointer-events:all}
+.slide.active{opacity:1;pointer-events:all;transform:translateX(0)}
+.slide.exit{opacity:0;transform:translateX(-40px)}
 
 /* Nav */
-.nav{display:flex;align-items:center;justify-content:space-between;padding:9px 22px;background:var(--teal);border-top:3px solid var(--orange);gap:12px;position:relative;z-index:10}
-.nav-btn{background:transparent;border:1px solid rgba(240,230,208,.3);color:var(--cream);padding:6px 16px;font-size:11px;cursor:pointer;font-family:var(--fb);font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .2s}
-.nav-btn:hover:not(:disabled){background:rgba(240,230,208,.1)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:10px 24px;background:var(--teal);border-top:3px solid var(--orange);gap:12px;position:relative;z-index:10}
+.nav-btn{background:transparent;border:2px solid rgba(240,230,208,.4);color:var(--cream);padding:8px 24px;font-size:22px;cursor:pointer;font-family:var(--fb);font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .2s}
+.nav-btn:hover:not(:disabled){background:rgba(240,230,208,.12);border-color:rgba(240,230,208,.7)}
 .nav-btn:disabled{opacity:.25;cursor:default}
-.nav-center{display:flex;align-items:center;gap:5px;flex:1;justify-content:center}
-.nav-dot{width:7px;height:7px;background:rgba(240,230,208,.2);cursor:pointer;transition:all .2s;transform:rotate(45deg)}
-.nav-dot.active{background:var(--orange2);transform:rotate(45deg) scale(1.4)}
-.nav-counter{font-size:11px;color:rgba(240,230,208,.4);min-width:60px;text-align:center;font-family:var(--fb);letter-spacing:.08em}
+.nav-center{display:flex;align-items:center;gap:6px;flex:1;justify-content:center}
+.nav-dot{width:9px;height:9px;background:rgba(240,230,208,.2);cursor:pointer;transition:all .2s;transform:rotate(45deg)}
+.nav-dot.active{background:var(--orange2);transform:rotate(45deg) scale(1.5)}
+.nav-counter{font-size:20px;color:rgba(240,230,208,.5);min-width:80px;text-align:center;font-family:var(--fb);letter-spacing:.08em}
 
 /* Typography */
-.eyebrow{font-family:var(--fs);font-size:20px;color:var(--orange);display:inline-block;line-height:1.3;margin-bottom:3px}
-.slide-hdr{margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--cream3)}
-.slide-hdr h2{font-family:var(--fb);font-size:28px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--teal);line-height:1.1}
-.lbl{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{font-family:var(--fs);font-size:38px;color:var(--orange);display:inline-block;line-height:1.3;margin-bottom:4px}
+.slide-hdr{margin-bottom:16px;padding-bottom:12px;border-bottom:3px solid var(--cream3)}
+.slide-hdr h2{font-family:var(--fb);font-size:60px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--teal);line-height:1.05}
+.lbl{font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 
 /* TITLE */
 .slide-title{background:var(--teal)!important;padding:0!important;overflow:hidden;background-image:none!important}
 .title-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1;padding:24px 48px 0;position:relative;z-index:2}
-.title-eyebrow{font-family:var(--fs);font-size:26px;color:var(--gold2);margin-bottom:8px}
-.title-h1{font-family:var(--fh);font-size:80px;line-height:.9;letter-spacing:.02em;color:var(--cream);margin-bottom:18px}
-.title-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-.tbadge{padding:9px 20px;font-family:var(--fb);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.title-eyebrow{font-family:var(--fs);font-size:48px;color:var(--gold2);margin-bottom:10px}
+.title-h1{font-family:var(--fh);font-size:120px;line-height:.9;letter-spacing:.02em;color:var(--cream);margin-bottom:22px}
+.title-badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.tbadge{padding:12px 28px;font-family:var(--fb);font-size:24px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .tbadge.fill{background:var(--orange);color:var(--cream)}
-.tbadge.out{border:1px solid rgba(240,230,208,.3);color:rgba(240,230,208,.7)}
-.nations{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.nation{padding:4px 12px;border:1px solid rgba(240,230,208,.18);color:rgba(240,230,208,.5);font-family:var(--fb);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.tbadge.out{border:2px solid rgba(240,230,208,.3);color:rgba(240,230,208,.7)}
+.nations{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.nation{padding:7px 18px;border:1px solid rgba(240,230,208,.2);color:rgba(240,230,208,.55);font-family:var(--fb);font-size:20px;letter-spacing:.06em;text-transform:uppercase}
 .mtn{flex-shrink:0}
 .mtn svg{width:100%;display:block}
 
 /* AGENDA */
-.agenda-list{display:flex;flex-direction:column;gap:8px;flex:1;justify-content:center}
-.ag-item{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--cream2);border:1px solid var(--cream3);border-left:5px solid var(--teal)}
-.ag-num{font-family:var(--fh);font-size:42px;color:var(--cream4);line-height:1;min-width:40px}
-.ag-text{font-family:var(--fb);font-size:17px;font-weight:600;color:var(--teal);letter-spacing:.02em}
+.agenda-list{display:flex;flex-direction:column;gap:10px;flex:1;justify-content:center}
+.ag-item{display:flex;align-items:center;gap:20px;padding:18px 24px;background:var(--cream2);border:1px solid var(--cream3);border-left:6px solid var(--teal);transition:border-color .2s,background .2s;cursor:default}
+.ag-item:hover{background:var(--cream3);border-left-color:var(--orange)}
+.ag-num{font-family:var(--fh);font-size:64px;color:var(--cream4);line-height:1;min-width:64px}
+.ag-text{font-family:var(--fb);font-size:34px;font-weight:600;color:var(--teal);letter-spacing:.01em}
 
 /* SCRIPTURE */
-.scripture-list{display:flex;flex-direction:column;gap:10px;flex:1}
-.sc-item{background:var(--cream2);border:1px solid var(--cream3);border-left:5px solid var(--orange);padding:14px 18px}
-.sc-ref{font-family:var(--fb);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:7px}
-.sc-text{font-family:var(--fb);font-size:14px;color:var(--brown2);line-height:1.7}
+.scripture-list{display:flex;flex-direction:column;gap:12px;flex:1}
+.sc-item{background:var(--cream2);border:1px solid var(--cream3);border-left:6px solid var(--orange);padding:18px 24px;position:relative;overflow:hidden}
+.sc-item::before{content:'"';position:absolute;top:-10px;right:16px;font-family:var(--fh);font-size:140px;color:var(--teal);opacity:.07;line-height:1;pointer-events:none}
+.sc-ref{font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.sc-text{font-family:var(--fb);font-size:28px;color:var(--brown2);line-height:1.6}
 
 /* OBJECTIVES */
-.objectives{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;flex:1}
-.obj{padding:22px 20px;display:flex;flex-direction:column;gap:10px;border:1px solid var(--cream3)}
+.objectives{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1}
+.obj{padding:28px 24px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--cream3);align-items:flex-start}
 .obj.a{background:var(--teal);border-color:var(--teal2)}
-.obj.b{background:var(--cream2);border-left:5px solid var(--orange)}
-.obj.c{background:var(--cream2);border-left:5px solid var(--gold)}
-.obj-icon{font-size:26px}
-.obj-lbl{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.obj.b{background:var(--cream2);border-left:6px solid var(--orange)}
+.obj.c{background:var(--cream2);border-left:6px solid var(--gold)}
+.obj-icon{font-size:52px;line-height:1}
+.obj-lbl{font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
 .obj.a .obj-lbl{color:var(--gold2)}.obj.b .obj-lbl{color:var(--orange)}.obj.c .obj-lbl{color:var(--gold)}
-.obj-title{font-family:var(--fb);font-size:17px;font-weight:700;line-height:1.2}
+.obj-title{font-family:var(--fb);font-size:30px;font-weight:700;line-height:1.2}
 .obj.a .obj-title{color:var(--cream)}.obj.b .obj-title,.obj.c .obj-title{color:var(--teal)}
-.obj-desc{font-size:13px;color:var(--brown2);line-height:1.65}
-.obj.a .obj-desc{color:rgba(240,230,208,.7)}
+.obj-desc{font-size:22px;line-height:1.6}
+.obj.a .obj-desc{color:rgba(240,230,208,.75)}.obj.b .obj-desc,.obj.c .obj-desc{color:var(--brown2)}
 
 /* DETAILS */
-.details-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;flex:1}
-.det-card{background:var(--cream2);border:1px solid var(--cream3);padding:20px;display:flex;flex-direction:column;gap:8px}
+.details-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1}
+.det-card{background:var(--cream2);border:1px solid var(--cream3);padding:24px;display:flex;flex-direction:column;gap:10px}
 .det-card:nth-child(1) .lbl{color:var(--teal)}.det-card:nth-child(2) .lbl{color:var(--orange)}.det-card:nth-child(3) .lbl{color:var(--gold)}
-.det-title{font-family:var(--fb);font-size:19px;font-weight:700;color:var(--teal)}
-.det-ph{flex:1;display:flex;align-items:center;justify-content:center;border:1px dashed var(--cream3);padding:14px;font-size:12px;color:var(--brown3);text-align:center}
+.det-title{font-family:var(--fb);font-size:36px;font-weight:700;color:var(--teal)}
+.det-ph{flex:1;display:flex;align-items:center;justify-content:center;border:2px dashed var(--cream3);padding:16px;font-size:24px;color:var(--brown3);text-align:center;font-style:italic}
 
-/* GROUPS */
-.go-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;flex:1}
-.go-card{background:var(--cream2);border:1px solid var(--cream3);padding:18px}
-.go-title{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--cream3)}
+/* GROUPS OVERVIEW */
+.go-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;flex:1}
+.go-card{background:var(--cream2);border:1px solid var(--cream3);padding:20px}
+.go-title{font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--cream3)}
 .go-card:nth-child(1) .go-title{color:var(--teal)}.go-card:nth-child(2) .go-title{color:var(--orange)}.go-card:nth-child(3) .go-title{color:var(--gold)}
-.go-items{display:flex;flex-direction:column;gap:7px}
-.go-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--brown2);line-height:1.6}
-.go-dot{width:4px;height:14px;flex-shrink:0;margin-top:3px}
+.go-items{display:flex;flex-direction:column;gap:10px}
+.go-item{display:flex;gap:10px;align-items:flex-start;font-size:24px;color:var(--brown2);line-height:1.55}
+.go-dot{width:6px;min-height:20px;flex-shrink:0;margin-top:6px}
 .go-card:nth-child(1) .go-dot{background:var(--teal)}.go-card:nth-child(2) .go-dot{background:var(--orange)}.go-card:nth-child(3) .go-dot{background:var(--gold)}
 
-/* PROFILES */
-.prof-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;flex:1}
+/* CHARACTER PROFILES */
+.prof-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;flex:1}
 .prof-card{background:var(--cream2);border:1px solid var(--cream3);overflow:hidden;display:flex;flex-direction:column}
-.prof-ph{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.prof-ph-num{font-family:var(--fh);font-size:58px;opacity:.15;line-height:1;color:var(--teal)}
-.prof-ph-ico{font-size:36px;position:absolute;bottom:8px;right:10px}
-.prof-info{padding:8px 10px}
-.prof-num{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:2px}
-.prof-name{font-family:var(--fb);font-size:11px;font-weight:600;color:var(--teal);line-height:1.3;margin-bottom:3px}
-.prof-desc{font-size:10px;color:var(--brown2);line-height:1.45}
+.prof-img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;background:var(--cream)}
+.prof-info{padding:12px 14px;flex:1;display:flex;flex-direction:column;gap:5px}
+.prof-num{font-family:var(--fb);font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.prof-name{font-family:var(--fb);font-size:22px;font-weight:700;color:var(--teal);line-height:1.25}
+.prof-desc{font-size:18px;color:var(--brown2);line-height:1.5}
 
 /* GROUP SLIDES */
-.grp-hdr{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.grp-hdr{display:flex;align-items:center;gap:16px;margin-bottom:14px}
 .grp-badge{display:flex;align-items:center;background:var(--teal)}
-.grp-num{width:36px;height:36px;background:var(--orange);color:var(--cream);font-family:var(--fh);font-size:26px;display:flex;align-items:center;justify-content:center}
-.grp-badge-txt{font-family:var(--fb);font-size:12px;font-weight:700;color:var(--cream);letter-spacing:.08em;text-transform:uppercase;padding:0 14px}
-.grp-sub{font-family:var(--fb);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--brown3)}
-.grp-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;flex:1}
+.grp-num{width:52px;height:52px;background:var(--orange);color:var(--cream);font-family:var(--fh);font-size:38px;display:flex;align-items:center;justify-content:center}
+.grp-badge-txt{font-family:var(--fb);font-size:24px;font-weight:700;color:var(--cream);letter-spacing:.08em;text-transform:uppercase;padding:0 18px}
+.grp-sub{font-family:var(--fb);font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--brown3)}
+.grp-layout{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;flex:1}
 .grp-tbl-wrap{border:1px solid var(--cream3);overflow:hidden}
-.grp-tbl-lbl{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);background:var(--teal);padding:8px 12px}
+.grp-tbl-lbl{font-family:var(--fb);font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);background:var(--teal);padding:12px 16px}
 table{width:100%;border-collapse:collapse}
-th{font-family:var(--fb);font-size:9px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--brown3);text-align:left;padding:7px 10px;border-bottom:1px solid var(--cream3);background:var(--cream2)}
-td{font-size:12px;color:var(--brown2);padding:8px 10px;border-bottom:1px solid var(--cream2)}
+th{font-family:var(--fb);font-size:18px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--brown3);text-align:left;padding:10px 14px;border-bottom:2px solid var(--cream3);background:var(--cream2)}
+td{font-size:24px;color:var(--brown2);padding:10px 14px;border-bottom:1px solid var(--cream2)}
 tr:last-child td{border-bottom:none}
 td:first-child{color:var(--brown);font-weight:600}
-.rtag{display:inline-block;padding:1px 8px;font-family:var(--fb);font-size:10px;font-weight:700;letter-spacing:.05em}
+.rtag{display:inline-block;padding:3px 10px;font-family:var(--fb);font-size:16px;font-weight:700;letter-spacing:.05em}
 .rtag.br{background:var(--teal);color:var(--cream)}.rtag.sr{background:var(--orange);color:var(--cream)}
-.grp-right{display:flex;flex-direction:column;gap:10px}
+.grp-right{display:flex;flex-direction:column;gap:12px}
 .topics-card{border:1px solid var(--cream3);overflow:hidden}
-.topics-lbl{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);background:var(--orange);padding:8px 12px}
-.topic-item{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-bottom:1px solid var(--cream2);background:var(--cream2)}
+.topics-lbl{font-family:var(--fb);font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);background:var(--orange);padding:12px 16px}
+.topic-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-bottom:1px solid var(--cream2);background:var(--cream2)}
 .topic-item:last-child{border-bottom:none}
-.topic-num{width:18px;height:18px;background:var(--orange);color:var(--cream);font-family:var(--fb);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.topic-txt{font-size:12px;color:var(--brown2);line-height:1.55}
-.fac-card{background:var(--teal);padding:14px 16px}
-.fac-lbl{font-family:var(--fb);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold2);margin-bottom:5px}
-.fac-name{font-family:var(--fb);font-size:16px;font-weight:600;color:var(--cream)}
+.topic-num{width:28px;height:28px;background:var(--orange);color:var(--cream);font-family:var(--fb);font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.topic-txt{font-size:24px;color:var(--brown2);line-height:1.5}
+.fac-card{background:var(--teal);padding:16px 20px}
+.fac-lbl{font-family:var(--fb);font-size:18px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);margin-bottom:6px}
+.fac-name{font-family:var(--fb);font-size:30px;font-weight:600;color:var(--cream)}
 
 /* POST CAMP */
-.pc-items{display:flex;flex-direction:column;gap:10px;flex:1}
-.pc-item{background:var(--cream2);border:1px solid var(--cream3);border-left:5px solid var(--teal);padding:16px 20px;font-size:14px;color:var(--brown2);line-height:1.65;display:flex;gap:14px;align-items:flex-start}
-.pc-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.pc-items{display:flex;flex-direction:column;gap:12px;flex:1}
+.pc-item{background:var(--cream2);border:1px solid var(--cream3);border-left:6px solid var(--teal);padding:20px 26px;font-size:28px;color:var(--brown2);line-height:1.6;display:flex;gap:18px;align-items:flex-start}
+.pc-icon{font-size:32px;flex-shrink:0;margin-top:3px}
 </style>
 </head>
 <body>
 <div class="pres">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
   <div class="slides-wrap">
 
     <!-- S1: TITLE -->
@@ -175,27 +181,21 @@ td:first-child{color:var(--brown);font-weight:600}
           <span class="nation">🇮🇹 Italy</span>
         </div>
       </div>
-      <!-- Mountain panorama with sun -->
       <div class="mtn">
-        <svg viewBox="0 0 1200 170" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Far mountain range -->
-          <path d="M0,170 L0,95 L90,32 L170,68 L270,22 L370,58 L455,18 L550,52 L635,20 L720,56 L820,16 L920,55 L1020,22 L1110,60 L1200,32 L1200,170Z" fill="rgba(240,230,208,0.05)"/>
-          <!-- Mid mountain range -->
-          <path d="M0,170 L0,112 L130,55 L220,86 L340,42 L460,78 L568,36 L678,70 L788,30 L900,68 L1010,38 L1120,74 L1200,52 L1200,170Z" fill="rgba(240,230,208,0.10)"/>
-          <!-- Near mountain range -->
-          <path d="M0,170 L0,132 L160,76 L268,112 L390,70 L508,104 L620,64 L738,100 L852,62 L970,100 L1082,72 L1200,106 L1200,170Z" fill="rgba(240,230,208,0.17)"/>
-          <!-- Sun glow -->
-          <circle cx="600" cy="36" r="28" fill="rgba(212,170,80,0.14)"/>
-          <circle cx="600" cy="36" r="18" fill="rgba(212,170,80,0.22)"/>
-          <!-- Sun rays -->
-          <line x1="600" y1="2" x2="600" y2="12" stroke="rgba(212,170,80,0.55)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="600" y1="60" x2="600" y2="70" stroke="rgba(212,170,80,0.55)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="566" y1="12" x2="572" y2="20" stroke="rgba(212,170,80,0.45)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="634" y1="12" x2="628" y2="20" stroke="rgba(212,170,80,0.45)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="556" y1="36" x2="566" y2="36" stroke="rgba(212,170,80,0.45)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="644" y1="36" x2="634" y2="36" stroke="rgba(212,170,80,0.45)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="566" y1="60" x2="572" y2="52" stroke="rgba(212,170,80,0.45)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="634" y1="60" x2="628" y2="52" stroke="rgba(212,170,80,0.45)" stroke-width="2.5" stroke-linecap="round"/>
+        <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,200 L0,120 L90,50 L170,90 L270,30 L370,75 L455,25 L550,65 L635,28 L720,70 L820,22 L920,68 L1020,28 L1110,72 L1200,40 L1200,200Z" fill="rgba(240,230,208,0.05)"/>
+          <path d="M0,200 L0,140 L130,75 L220,108 L340,55 L460,95 L568,48 L678,85 L788,40 L900,82 L1010,50 L1120,88 L1200,65 L1200,200Z" fill="rgba(240,230,208,0.10)"/>
+          <path d="M0,200 L0,158 L160,98 L268,132 L390,88 L508,122 L620,80 L738,118 L852,78 L970,118 L1082,90 L1200,128 L1200,200Z" fill="rgba(240,230,208,0.18)"/>
+          <circle cx="600" cy="42" r="36" fill="rgba(212,170,80,0.14)"/>
+          <circle cx="600" cy="42" r="22" fill="rgba(212,170,80,0.22)"/>
+          <line x1="600" y1="2" x2="600" y2="14" stroke="rgba(212,170,80,0.6)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="600" y1="70" x2="600" y2="82" stroke="rgba(212,170,80,0.6)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="560" y1="14" x2="568" y2="24" stroke="rgba(212,170,80,0.5)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="640" y1="14" x2="632" y2="24" stroke="rgba(212,170,80,0.5)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="550" y1="42" x2="562" y2="42" stroke="rgba(212,170,80,0.5)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="650" y1="42" x2="638" y2="42" stroke="rgba(212,170,80,0.5)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="560" y1="70" x2="568" y2="60" stroke="rgba(212,170,80,0.5)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="640" y1="70" x2="632" y2="60" stroke="rgba(212,170,80,0.5)" stroke-width="3" stroke-linecap="round"/>
         </svg>
       </div>
     </div>
@@ -214,15 +214,15 @@ td:first-child{color:var(--brown);font-weight:600}
     <!-- S3: THEME -->
     <div class="slide" id="s3">
       <div class="slide-hdr"><div class="eyebrow">Camp Theme</div><h2>Growing Together in Fellowship, Evangelism &amp; Spirit</h2></div>
-      <div style="display:flex;gap:8px;margin-bottom:16px">
-        <span style="padding:6px 14px;background:var(--teal);color:var(--cream);font-family:var(--fb);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Fellowship</span>
-        <span style="padding:6px 14px;background:var(--orange);color:var(--cream);font-family:var(--fb);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Evangelism</span>
-        <span style="padding:6px 14px;background:var(--gold);color:var(--cream);font-family:var(--fb);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Spirit</span>
+      <div style="display:flex;gap:10px;margin-bottom:18px">
+        <span style="padding:8px 18px;background:var(--teal);color:var(--cream);font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Fellowship</span>
+        <span style="padding:8px 18px;background:var(--orange);color:var(--cream);font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Evangelism</span>
+        <span style="padding:8px 18px;background:var(--gold);color:var(--cream);font-family:var(--fb);font-size:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Spirit</span>
       </div>
-      <div class="sc-item" style="margin-bottom:10px"><div class="sc-ref">2 Timothy 4:5</div><div class="sc-text">"Do the work of an evangelist, fulfil your ministry."</div></div>
-      <div style="background:var(--cream2);border:1px solid var(--cream3);padding:16px 18px">
-        <div class="lbl" style="color:var(--brown3);margin-bottom:6px">Evangelist — a person who</div>
-        <div style="font-family:var(--fb);font-size:13px;color:var(--brown2);line-height:1.7">Seeks to share the gospel and invite others into a living understanding of faith — not through pressure, but through honest conversation, lived witness, and patient testimony.</div>
+      <div class="sc-item" style="margin-bottom:14px"><div class="sc-ref">2 Timothy 4:5</div><div class="sc-text">"Do the work of an evangelist, fulfil your ministry."</div></div>
+      <div style="background:var(--cream2);border:1px solid var(--cream3);padding:20px 24px">
+        <div class="lbl" style="color:var(--brown3);margin-bottom:8px">Evangelist — a person who</div>
+        <div style="font-size:26px;color:var(--brown2);line-height:1.65">Seeks to share the gospel and invite others into a living understanding of faith — not through pressure, but through honest conversation, lived witness, and patient testimony.</div>
       </div>
     </div>
 
@@ -231,8 +231,8 @@ td:first-child{color:var(--brown);font-weight:600}
       <div class="slide-hdr"><div class="eyebrow">Scriptural Foundation</div><h2>Why Evangelism?</h2></div>
       <div class="scripture-list">
         <div class="sc-item"><div class="sc-ref">Hosea 4:6</div><div class="sc-text">"My people are destroyed for a lack of knowledge."</div></div>
-        <div class="sc-item"><div class="sc-ref">2 Timothy 4:2 &amp; 5</div><div class="sc-text">"Preach the word! Be ready in season and out of season. Convince, rebuke, exhort, with all longsuffering and teaching… do the work of an evangelist, fulfil your ministry."</div></div>
-        <div class="sc-item"><div class="sc-ref">Matthew 28:19 &amp; 20</div><div class="sc-text">"Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all things that I have commanded you; and lo, I am with you always, even to the end of the age."</div></div>
+        <div class="sc-item"><div class="sc-ref">2 Timothy 4:2 &amp; 5</div><div class="sc-text">"Preach the word! Be ready in season and out of season… do the work of an evangelist, fulfil your ministry."</div></div>
+        <div class="sc-item"><div class="sc-ref">Matthew 28:19 &amp; 20</div><div class="sc-text">"Go therefore and make disciples of all the nations… I am with you always, even to the end of the age."</div></div>
       </div>
     </div>
 
@@ -260,21 +260,28 @@ td:first-child{color:var(--brown);font-weight:600}
     <div class="slide" id="s7">
       <div class="slide-hdr"><div class="eyebrow">U/D Radzilani &amp; Br Carstens</div><h2>Evangelistic Groups</h2></div>
       <div class="go-grid">
-        <div class="go-card"><div class="go-title">Group Structure</div><div class="go-items"><div class="go-item"><div class="go-dot"></div>13 groups of 4–5 youth members</div><div class="go-item"><div class="go-dot"></div>Each group nominates a Chairperson responsible for organising breadbreaks</div><div class="go-item"><div class="go-dot"></div>All youth must actively participate in breadbreaks</div><div class="go-item"><div class="go-dot"></div>Each group is assigned a facilitating Officer or Help Power</div></div></div>
-        <div class="go-card"><div class="go-title">What is Required</div><div class="go-items"><div class="go-item"><div class="go-dot"></div>Prepare as if you will be personally testifying</div><div class="go-item"><div class="go-dot"></div>Research both of your group's assigned topics thoroughly</div><div class="go-item"><div class="go-dot"></div>Break bread together about each topic during your preparation</div></div></div>
-        <div class="go-card"><div class="go-title">Your Output</div><div class="go-items"><div class="go-item"><div class="go-dot"></div>Prepare a slide summarising each topic with scriptural references and explanation</div><div class="go-item"><div class="go-dot"></div>One nominated youth member per group will privately portray an assigned character profile</div><div class="go-item"><div class="go-dot"></div>Testify to your character regarding one of your topics at camp</div></div></div>
+        <div class="go-card"><div class="go-title">Group Structure</div><div class="go-items"><div class="go-item"><div class="go-dot"></div>13 groups of 4–5 youth members</div><div class="go-item"><div class="go-dot"></div>Each group nominates a Chairperson to organise breadbreaks</div><div class="go-item"><div class="go-dot"></div>All youth must actively participate in breadbreaks</div><div class="go-item"><div class="go-dot"></div>Each group is assigned a facilitating Officer or Help Power</div></div></div>
+        <div class="go-card"><div class="go-title">What is Required</div><div class="go-items"><div class="go-item"><div class="go-dot"></div>Prepare as if you will be personally testifying</div><div class="go-item"><div class="go-dot"></div>Research both assigned topics thoroughly</div><div class="go-item"><div class="go-dot"></div>Break bread together about each topic during preparation</div></div></div>
+        <div class="go-card"><div class="go-title">Your Output</div><div class="go-items"><div class="go-item"><div class="go-dot"></div>Prepare a slide summarising each topic with scriptural references</div><div class="go-item"><div class="go-dot"></div>One nominated youth member portrays an assigned character profile</div><div class="go-item"><div class="go-dot"></div>Testify to your character regarding one of your topics at camp</div></div></div>
       </div>
     </div>
 
-    <!-- S8: CHARACTER PROFILES -->
-    <div class="slide" id="s8">
-      <div class="slide-hdr"><div class="eyebrow">Evangelistic Character Challenge</div><h2>Character Profiles</h2></div>
+    <!-- S8a: CHARACTER PROFILES 1–5 -->
+    <div class="slide" id="s8a">
+      <div class="slide-hdr"><div class="eyebrow">Evangelistic Character Challenge</div><h2>Character Profiles <span style="font-size:40px;opacity:.5">1 – 5</span></h2></div>
       <div class="prof-grid">
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%201.png" alt="P1"><div class="prof-info"><div class="prof-num">Profile 01</div><div class="prof-name">The Thoughtful Scientific Thinker</div><div class="prof-desc">Values logic and evidence. Cautious of beliefs that cannot be clearly reasoned.</div></div></div>
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%202.png" alt="P2"><div class="prof-info"><div class="prof-num">Profile 02</div><div class="prof-name">The Cautious Churchgoer</div><div class="prof-desc">Has past church experience. Still values faith but hesitant about involvement.</div></div></div>
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%203.png" alt="P3"><div class="prof-info"><div class="prof-num">Profile 03</div><div class="prof-name">The Spiritual-but-Not-Religious</div><div class="prof-desc">Open to spirituality but uncomfortable with organised religion.</div></div></div>
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%204.png" alt="P4"><div class="prof-info"><div class="prof-num">Profile 04</div><div class="prof-name">The Friendly Skeptic</div><div class="prof-desc">Open to conversation but sees faith as a personal choice.</div></div></div>
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%205.png" alt="P5"><div class="prof-info"><div class="prof-num">Profile 05</div><div class="prof-name">The Busy Professional</div><div class="prof-desc">Open to faith in principle but struggles to see how it fits daily life.</div></div></div>
+      </div>
+    </div>
+
+    <!-- S8b: CHARACTER PROFILES 6–10 -->
+    <div class="slide" id="s8b">
+      <div class="slide-hdr"><div class="eyebrow">Evangelistic Character Challenge</div><h2>Character Profiles <span style="font-size:40px;opacity:.5">6 – 10</span></h2></div>
+      <div class="prof-grid">
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%206.png" alt="P6"><div class="prof-info"><div class="prof-num">Profile 06</div><div class="prof-name">The Cultural Christian</div><div class="prof-desc">Familiar with Christianity by tradition but does not actively practise.</div></div></div>
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%207.png" alt="P7"><div class="prof-info"><div class="prof-num">Profile 07</div><div class="prof-name">The Moral Humanist</div><div class="prof-desc">Values ethics and living well. Believes morality needs no religion.</div></div></div>
         <div class="prof-card"><img class="prof-img" src="https://raw.githubusercontent.com/Brolloks/OAC/main/Profile%208.png" alt="P8"><div class="prof-info"><div class="prof-num">Profile 08</div><div class="prof-name">The Curious Friend</div><div class="prof-desc">Genuinely interested and open to faith, still exploring and not yet settled.</div></div></div>
@@ -349,14 +356,19 @@ const slides=[...document.querySelectorAll('.slide')];
 const total=slides.length;
 let cur=0;
 const dotWrap=document.getElementById('dotWrap');
+const fill=document.getElementById('progressFill');
+
 slides.forEach((_,i)=>{
   const d=document.createElement('div');
   d.className='nav-dot'+(i===0?' active':'');
   d.onclick=()=>goTo(i);
   dotWrap.appendChild(d);
 });
+
 function goTo(idx){
   slides[cur].classList.remove('active');
+  slides[cur].classList.add('exit');
+  setTimeout(()=>slides[cur]&&slides[cur].classList.remove('exit'),350);
   document.querySelectorAll('.nav-dot')[cur].classList.remove('active');
   cur=Math.max(0,Math.min(total-1,idx));
   slides[cur].classList.add('active');
@@ -364,6 +376,7 @@ function goTo(idx){
   document.getElementById('counter').textContent=`${cur+1} / ${total}`;
   document.getElementById('prevBtn').disabled=cur===0;
   document.getElementById('nextBtn').disabled=cur===total-1;
+  fill.style.width=`${((cur+1)/total)*100}%`;
 }
 function go(d){goTo(cur+d);}
 document.addEventListener('keydown',e=>{
