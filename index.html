@@ -369,9 +369,11 @@ const G=[
   {n:13,tag:"Pr & Sr Prinsloo",topics:["Three Holy Sacraments — why do I need to go through each to be part of the body?","The Body of Christ — explain that the Old Apostolic Church represents the body of Christ today"],members:[{name:"Mya Prinsloo",r:"Sr",age:20,c:"UK"},{name:"Tyrece Orji",r:"Br",age:"—",c:"Ireland"},{name:"Tobias Schapke",r:"Br",age:21,c:"Germany"},{name:"Rhys Smouse",r:"Br",age:15,c:"UK"},{name:"Aimee Paige Payne",r:"Sr",age:19,c:"UK"}]}
 ];
 
+const PROFILES={1:{num:"03",name:"The Spiritual-but-Not-Religious",img:"Profile%203.png"},2:{num:"07",name:"The Moral Humanist",img:"Profile%207.png"},3:{num:"01",name:"The Thoughtful Scientific Thinker",img:"Profile%201.png"},4:{num:"09",name:"The Hurt Believer",img:"Profile%209.png"},5:{num:"05",name:"The Busy Professional",img:"Profile%205.png"},6:{num:"02",name:"The Cautious Churchgoer",img:"Profile%202.png"},7:{num:"08",name:"The Curious Friend",img:"Profile%208.png"},8:{num:"04",name:"The Friendly Skeptic",img:"Profile%204.png"},9:{num:"10",name:"The Uninterested Peer",img:"Profile%2010.png"},10:{num:"06",name:"The Cultural Christian",img:"Profile%206.png"},11:{num:"05",name:"The Busy Professional",img:"Profile%205.png"},12:{num:"02",name:"The Cautious Churchgoer",img:"Profile%202.png"},13:{num:"08",name:"The Curious Friend",img:"Profile%208.png"}};
 const wrap=document.querySelector('.slides-wrap');
 G.forEach(g=>{
-  const rows=g.members.map(m=>`<tr><td>${m.name}</td><td><span class="rtag ${m.r.toLowerCase()}">${m.r}</span></td><td>${m.age}</td><td>${m.c}</td></tr>`).join('');
+  const prof=PROFILES[g.n];
+  const rows=g.members.map(m=>`<tr><td>${m.name}</td><td><span class="rtag ${m.r.toLowerCase()}">${m.r}</span></td><td>${m.c}</td></tr>`).join('');
   const topics=g.topics.map((t,i)=>`<div class="topic-item"><div class="topic-num">${i+1}</div><div class="topic-txt">${t}</div></div>`).join('');
   const d=document.createElement('div');
   d.className='slide';d.id=`sg${g.n}`;
@@ -382,11 +384,19 @@ G.forEach(g=>{
     </div>
     <div class="grp-layout">
       <div><div class="grp-tbl-wrap"><div class="grp-tbl-lbl">Members</div>
-        <table><thead><tr><th>Name</th><th>Role</th><th>Age</th><th>Country</th></tr></thead><tbody>${rows}</tbody></table>
+        <table><thead><tr><th>Name</th><th>Role</th><th>Country</th></tr></thead><tbody>${rows}</tbody></table>
       </div></div>
       <div class="grp-right">
         <div class="topics-card"><div class="topics-lbl">Assigned Topics</div>${topics}</div>
         <div class="fac-card"><div class="fac-lbl">Facilitator</div><div class="fac-name">${g.tag}</div></div>
+        <div style="background:var(--orange);padding:14px 16px;display:flex;gap:14px;align-items:flex-start">
+          <img src="https://raw.githubusercontent.com/Brolloks/OAC/main/${prof.img}" style="width:90px;height:90px;object-fit:cover;object-position:top;border:2px solid rgba(240,230,208,.3);flex-shrink:0">
+          <div>
+            <div style="font-family:var(--fb);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(240,230,208,.75);margin-bottom:5px">Character Profile</div>
+            <div style="font-family:var(--fh);font-size:30px;color:var(--cream);line-height:1.1">Profile ${prof.num}</div>
+            <div style="font-family:var(--fb);font-size:18px;font-weight:600;color:rgba(240,230,208,.85);margin-top:4px">${prof.name}</div>
+          </div>
+        </div>
       </div>
     </div>`;
   wrap.appendChild(d);
