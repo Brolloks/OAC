@@ -373,7 +373,8 @@ const PROFILES={1:{num:"03",name:"The Spiritual-but-Not-Religious",img:"Profile%
 const wrap=document.querySelector('.slides-wrap');
 G.forEach(g=>{
   const prof=PROFILES[g.n];
-  const rows=g.members.map(m=>`<tr><td>${m.name}</td><td><span class="rtag ${m.r.toLowerCase()}">${m.r}</span></td><td>${m.c}</td></tr>`).join('');
+  const flags={'UK':'🇬🇧','Ireland':'🇮🇪','Germany':'🇩🇪','Italy (EU)':'🇮🇹'};
+  const rows=g.members.map(m=>`<tr><td>${m.name}</td><td><span class="rtag ${m.r.toLowerCase()}">${m.r}</span></td><td style="font-size:26px;text-align:center">${flags[m.c]||m.c}</td></tr>`).join('');
   const topics=g.topics.map((t,i)=>`<div class="topic-item"><div class="topic-num">${i+1}</div><div class="topic-txt">${t}</div></div>`).join('');
   const d=document.createElement('div');
   d.className='slide';d.id=`sg${g.n}`;
@@ -384,7 +385,7 @@ G.forEach(g=>{
     </div>
     <div class="grp-layout">
       <div><div class="grp-tbl-wrap"><div class="grp-tbl-lbl">Members</div>
-        <table><thead><tr><th>Name</th><th>Role</th><th>Country</th></tr></thead><tbody>${rows}</tbody></table>
+        <table><thead><tr><th>Name</th><th>Role</th><th style="text-align:center">Origin</th></tr></thead><tbody>${rows}</tbody></table>
       </div></div>
       <div class="grp-right">
         <div class="topics-card"><div class="topics-lbl">Assigned Topics</div>${topics}</div>
