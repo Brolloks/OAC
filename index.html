@@ -156,10 +156,14 @@ td:first-child{color:var(--brown);font-weight:600}
   .tbadge{font-size:14px;padding:8px 14px}
   .nation{font-size:12px;padding:4px 10px}
   .nations{gap:6px}
-  .nav{padding:8px 12px}
-  .nav-btn{font-size:14px;padding:10px 18px}
-  .nav-counter{font-size:13px;min-width:50px}
-  .nav-dot{width:7px;height:7px}
+  /* Nav — tighter on mobile so nothing is cut off */
+  .nav{padding:6px 8px;gap:4px;border-top-width:2px}
+  .nav-btn{font-size:13px;padding:8px 14px;border-width:1px;letter-spacing:.06em}
+  .nav-counter{display:none}
+  /* Dots — more visible, centred */
+  .nav-dot{width:8px;height:8px;background:rgba(240,230,208,.35);border:1px solid rgba(240,230,208,.5)}
+  .nav-dot.active{background:var(--orange2);border-color:var(--orange2);transform:rotate(45deg) scale(1.5)}
+  .nav-center{gap:5px;flex-wrap:wrap}
 }
 </style>
 </head>
@@ -417,7 +421,7 @@ const G=[
   {n:3,tag:"Br Carstens (Tag)",topics:["Three Holy Sacraments — why do I need to go through each to be part of the body?","Tithing — why do we do it and what is the purpose?"],members:[{name:"Erin Manuel",r:"Sr",c:"UK"},{name:"Leuan Jones",r:"Br",c:"UK"},{name:"Leah Renkin",r:"Sr",c:"Ireland"},{name:"Jenifer Buskes",r:"Sr",c:"Ireland"},{name:"Wayne Eben Kriel",r:"Br",c:"UK"}]},
   {n:4,tag:"Pr Morris",topics:["Reading the Bible spiritually","Everlasting life — the soul inherits everlasting life. What does that mean?"],members:[{name:"Samuel Payne",r:"Br",c:"UK"},{name:"Wyatt Smouse",r:"Br",c:"UK"},{name:"Tristan Eales",r:"Br",c:"Ireland"},{name:"Ashley Gilberto Uache",r:"Sr",c:"Germany"},{name:"Isago Molefe",r:"Br",c:"UK"}]},
   {n:5,tag:"Pr & Sr Prinsloo",topics:["Creation in Genesis 1 — is it natural or spiritual?","Baptism — why do I need to be baptised and what is the difference between Holy and True baptism?"],members:[{name:"Lekeisha Brownley",r:"Sr",c:"UK"},{name:"Amelia Bakbak",r:"Sr",c:"UK"},{name:"Tshireletso Moipolai",r:"Br",c:"Ireland"},{name:"Terry Onang Egute",r:"Br",c:"Germany"},{name:"Rosinah Mphetlhe",r:"Sr",c:"UK"}]},
-  {n:6,tag:"Pr & Sr Stanz",topics:["Holy Communion — what is it and what is the difference between Holy and True communion?","Anointed Handlings — what is it, what is the purpose, and when can I receive them?"],members:[{name:"Tamlyn Fourie",r:"Sr",c:"UK"},{name:"Izel Bakbak",r:"Sr",c:"UK"},{name:"Boago Victor Ratshoswane",r:"Br",c:"Ireland"},{name:"Jakob Schapke",r:"Br",c:"Germany"},{name:"Matthew Welcome",r:"Br",c:"UK"}]},
+  {n:6,tag:"Overseer Fourie",topics:["Holy Communion — what is it and what is the difference between Holy and True communion?","Anointed Handlings — what is it, what is the purpose, and when can I receive them?"],members:[{name:"Tamlyn Fourie",r:"Sr",c:"UK"},{name:"Izel Bakbak",r:"Sr",c:"UK"},{name:"Boago Victor Ratshoswane",r:"Br",c:"Ireland"},{name:"Jakob Schapke",r:"Br",c:"Germany"},{name:"Matthew Welcome",r:"Br",c:"UK"}]},
   {n:7,tag:"U/D & Sr van der Merwe",topics:["The Prophet — what is it?","The Body of Christ — explain that the Old Apostolic Church represents the body of Christ today"],members:[{name:"Suné van der Sandt",r:"Sr",c:"UK"},{name:"Aidan Fourie",r:"Br",c:"UK"},{name:"Elena Martine Kalchbrenner",r:"Sr",c:"Ireland"},{name:"Julian Steinbruck",r:"Br",c:"Germany"},{name:"Meekhai Felix",r:"Sr",c:"UK"}]},
   {n:8,tag:"Elder Schapke",topics:["The Bible represents the word of God — why do we believe that?","Everlasting life — what is it and who can inherit it?"],members:[{name:"Aimee-Lee Beggache",r:"Sr",c:"UK"},{name:"Fred Harvey",r:"Br",c:"UK"},{name:"Kebitsang Naomi Tsheko",r:"Sr",c:"Ireland"},{name:"Leonie Altmann",r:"Sr",c:"Germany"},{name:"Theunis (Janko) Lourens",r:"Br",c:"UK"}]},
   {n:9,tag:"Br Fourie",topics:["Rebirth — what is it and why do I need to be reborn?","Heaven and Earth — where and what is it? Declare the spiritual heaven and earth"],members:[{name:"Gianni Prinsloo",r:"Br",c:"UK"},{name:"Star Sonnenberg",r:"Sr",c:"UK"},{name:"Moitlamo Sejammu",r:"Sr",c:"Ireland"},{name:"Samuel Schapke",r:"Br",c:"Germany"},{name:"Clinton Freeman",r:"Br",c:"UK"}]},
